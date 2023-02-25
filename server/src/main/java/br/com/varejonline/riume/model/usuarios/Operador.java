@@ -1,5 +1,7 @@
 package br.com.varejonline.riume.model.usuarios;
 
+import java.util.Set;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -22,5 +24,11 @@ public class Operador extends Pessoa {
 	public Operador (String nome, String usuario, String senha) {
 		super(nome, usuario, senha);
 		addPerfil(Perfil.OPERADOR);
+	}
+	
+	@Builder
+	public Operador (String nome, String usuario, String senha, Set<Integer> perfis) {
+		super(nome, usuario, senha);
+		this.perfis = perfis;
 	}
 }

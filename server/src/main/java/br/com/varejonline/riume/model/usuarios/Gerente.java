@@ -1,5 +1,7 @@
 package br.com.varejonline.riume.model.usuarios;
 
+import java.util.Set;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -23,6 +25,12 @@ public class Gerente extends Pessoa {
 	public Gerente (String nome, String usuario, String senha) {
 		super(nome, usuario, senha);
 		addPerfil(Perfil.GERENTE);
+	}
+	
+	@Builder
+	public Gerente (String nome, String usuario, String senha, Set<Integer> perfis) {
+		super(nome, usuario, senha);
+		this.perfis = perfis;
 	}
 	
 }

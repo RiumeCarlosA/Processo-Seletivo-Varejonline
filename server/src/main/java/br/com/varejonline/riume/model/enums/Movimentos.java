@@ -26,4 +26,18 @@ public enum Movimentos {
 		this.codigo = codigo;
 		this.descricao = descricao;
 	}
+	
+	public static Movimentos toEnum(Integer cod) {
+		if(cod == null) {
+			return null;
+		}
+		
+		for(Movimentos x : Movimentos.values()) {
+			if(cod.equals(x.getCodigo())){
+				return x;
+			}
+		}
+		
+		throw new IllegalArgumentException("Perfil inválido");
+	}
 }

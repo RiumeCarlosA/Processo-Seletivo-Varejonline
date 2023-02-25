@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -17,6 +19,9 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import br.com.varejonline.riume.model.enums.Movimentos;
+import br.com.varejonline.riume.model.usuarios.Pessoa;
+import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
@@ -28,27 +33,44 @@ public class Movimentacao implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected Integer id;
-
-	@Column(name = "data_movimentacao")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT")
-	protected Instant dataMovimentacao;
+	private Integer id;
 	
 	@Column(name = "quantidade")
-	protected Integer qtd;
+	private Integer qtd;
 	
 	@Column(name = "motivo")
-	protected String motivo;
+	private String motivo;
 	
 	@ManyToOne
-	protected Produto produto;
+	private Pessoa pessoa;
+	
+	//@ManyToMany(mappedBy = "movimentacao", cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Produto produto;
 	
 	@ToString.Exclude
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "MOVIMENTO")
-	protected Set<Integer> movimento = new HashSet<>();
+	private Set<Integer> movimentos = new HashSet<>();
 	
+	@Column(name = "data_movimentacao")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT")
+	private Instant dataMovimentacao = Instant.now();
 	
+	@Builder
+	public Movimentacao(Integer qtd, String motivo, Produto produto, Pessoa pessoa) {
+		this.qtd = qtd;
+		this.motivo = motivo;
+		this.produto = produto;
+		this.pessoa = pessoa;
+	}
 	
+	public Set<Movimentos> getMovimentos() {
+		return movimentos.stream().map(x -> Movimentos.toEnum(x)).collect(Collectors.toSet());
+	}
+
+	public void addMovimento(Movimentos movimentos ) {
+		this.movimentos.add(movimentos.getCodigo());
+	}
 	
 }
