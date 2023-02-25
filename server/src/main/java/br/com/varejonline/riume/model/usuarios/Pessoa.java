@@ -25,7 +25,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import br.com.varejonline.riume.model.usuarios.enums.Perfil;
+import br.com.varejonline.riume.model.enums.Perfil;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

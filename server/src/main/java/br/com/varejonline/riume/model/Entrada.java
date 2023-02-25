@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.DynamicUpdate;
@@ -19,7 +20,7 @@ import lombok.Data;
 @Data
 @DynamicUpdate
 @Entity
-public class Entrada implements Serializable{
+public class Entrada implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -27,7 +28,7 @@ public class Entrada implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToOne
+	@ManyToOne
 	private Produto produto;
 	
 	@Column(name = "quantidade", nullable = false)
@@ -40,5 +41,7 @@ public class Entrada implements Serializable{
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT")
 	private Instant dataEntrada;
 	
+	@Column(name = "documento")
+	private String documento;
 	
 }

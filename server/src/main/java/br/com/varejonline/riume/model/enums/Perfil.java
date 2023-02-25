@@ -1,4 +1,4 @@
-package br.com.varejonline.riume.model.usuarios.enums;
+package br.com.varejonline.riume.model.enums;
 
 import lombok.Getter;
 

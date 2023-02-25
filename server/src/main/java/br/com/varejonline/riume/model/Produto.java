@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -15,7 +16,7 @@ import lombok.Data;
 @Data
 @DynamicUpdate
 @Entity
-public class Produto implements Serializable{
+public class Produto implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -37,6 +38,12 @@ public class Produto implements Serializable{
 	
 	@Column(name = "saldo_inicial", nullable = false)
 	static private Integer saldoInicial;
+	
+	@ManyToOne
+	private Estoque estoque;
+	
+	@Column(name = "deleted", columnDefinition = "boolean default false")
+	protected boolean deleted = false;
 
 	public Produto(String nome, String codBarra, Double valorUnitario, Integer qtdMin) {
 		this.nome = nome;

@@ -1,9 +1,10 @@
-package br.com.varejonline.riume.model.usuarios;
+package br.com.varejonline.riume.model;
+
+import java.time.Instant;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-import br.com.varejonline.riume.model.enums.Perfil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,15 +15,16 @@ import lombok.EqualsAndHashCode;
 @Builder
 @AllArgsConstructor
 @Entity
-@DiscriminatorValue("GERENTE")
-public class Gerente extends Pessoa {
-	
+@DiscriminatorValue("AJUSTE_ENTRADA")
+public class AjusteSaida extends Ajuste {
+
 	private static final long serialVersionUID = 1L;
 	
 	@Builder
-	public Gerente (String nome, String usuario, String senha) {
-		super(nome, usuario, senha);
-		addPerfil(Perfil.GERENTE);
+	public AjusteSaida(Instant dataMovimentacao, Integer qtd, String motivo) {
+		this.dataMovimentacao = dataMovimentacao;
+		this.qtd = qtd;
+		this.motivo = motivo;
 	}
 	
 }
