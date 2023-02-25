@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.DynamicUpdate;
@@ -30,8 +29,7 @@ public class Estoque implements Serializable {
 	private Integer id;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "produto")
-	@JoinColumn(name = "produto_id")
+	@OneToMany(mappedBy = "estoque")
 	private List<Produto> produtos = new ArrayList<>();;
 	
 	@Column(name = "deleted", columnDefinition = "boolean default false")

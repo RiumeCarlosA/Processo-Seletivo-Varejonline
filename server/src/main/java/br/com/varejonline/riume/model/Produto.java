@@ -30,14 +30,8 @@ public class Produto implements Serializable {
 	@Column(name = "nome", nullable = false)
 	private String nome;
 	
-	@Column(name = "valor_unitario", nullable = false)
-	private Double valorUnitario;
-	
 	@Column(name = "quantidade_minima", nullable = false)
 	private Integer qtdMin;
-	
-	@Column(name = "saldo_inicial", nullable = false)
-	static private Integer saldoInicial;
 	
 	@ManyToOne
 	private Estoque estoque;
@@ -45,10 +39,9 @@ public class Produto implements Serializable {
 	@Column(name = "deleted", columnDefinition = "boolean default false")
 	protected boolean deleted = false;
 
-	public Produto(String nome, String codBarra, Double valorUnitario, Integer qtdMin) {
+	public Produto(String nome, String codBarra, Integer qtdMin) {
 		this.nome = nome;
 		this.codBarra = codBarra;
-		this.valorUnitario = valorUnitario;
 		this.qtdMin = qtdMin;
 	}
 	
