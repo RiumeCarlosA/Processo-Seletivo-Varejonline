@@ -25,17 +25,19 @@ public class GerenteResponseDTO {
 	private Set<Integer> perfis = new HashSet<>();
 	
 	@Builder
-	public GerenteResponseDTO (Integer id, String nome, String usuario, Set<Integer> perfis) {
+	public GerenteResponseDTO (Integer id, String nome, String usuario, String senha, Set<Integer> perfis) {
 		this.id = id;
 		this.nome = nome;
 		this.usuario = usuario;
+		this.senha = senha;
 		this.perfis = perfis;
 	}
 	
 	@Builder
-	public GerenteResponseDTO (String nome, String usuario) {
+	public GerenteResponseDTO (String nome, String usuario, String senha) {
 		this.nome = nome;
 		this.usuario = usuario;
+		this.senha = senha;
 	}
 	
 	public Set<Perfil> getPerfis() {

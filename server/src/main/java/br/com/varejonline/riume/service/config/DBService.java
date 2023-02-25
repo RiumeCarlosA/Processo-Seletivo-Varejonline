@@ -44,5 +44,12 @@ public class DBService {
 		List<Produto> listP = new ArrayList<>(Arrays.asList(coca, fanta));
 		
 		estoque.setProdutos(listP);
+		
+		operadorR.save(operador);
+		estoqueR.save(estoque);
+		produtoR.saveAll(listP);
+		
+		
+		
 	}
 }

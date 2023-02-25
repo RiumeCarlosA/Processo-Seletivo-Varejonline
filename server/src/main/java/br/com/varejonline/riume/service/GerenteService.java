@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,7 @@ import br.com.varejonline.riume.model.usuarios.Gerente;
 import br.com.varejonline.riume.repository.usuarios.GerenteRepository;
 import lombok.NonNull;
 
+@Service
 public class GerenteService {
 
 	@Autowired

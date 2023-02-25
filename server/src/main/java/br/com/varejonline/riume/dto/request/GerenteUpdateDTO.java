@@ -42,7 +42,7 @@ public class GerenteUpdateDTO {
 		this.nome = nome;
 		this.usuario = usuario;
 		this.senha = senha;
-		addPerfil(Perfil.OPERADOR);
+		addPerfil(Perfil.GERENTE);
 	}
 	
 	@Builder
