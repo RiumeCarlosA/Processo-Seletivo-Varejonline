@@ -3,7 +3,7 @@ package br.com.varejonline.riume.model.usuarios;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-import br.com.varejonline.riume.model.usuarios.enums.Perfil;
+import br.com.varejonline.riume.model.enums.Perfil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
