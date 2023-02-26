@@ -28,6 +28,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
@@ -39,8 +40,8 @@ public class OperadorController {
 	private OperadorService service;
 	
 	// @formatter:off
-    @Operation(summary = "Endpoint para buscar informacões básicas de todos os Operadores"
-    		/*, security = @SecurityRequirement(name = "token")*/)
+    @Operation(summary = "Endpoint para buscar informacões básicas de todos os Operadores",
+    		   security = @SecurityRequirement(name = "token"))
     @ApiResponses({
     	@ApiResponse(responseCode = "200",
     			description = "Identificação dos Operadores realizadas com sucesso\t\n.",
@@ -68,8 +69,8 @@ public class OperadorController {
 	}
     
     // @formatter:off
-    @Operation(summary = "Endpoint para buscar informacões básicas dos Operadores"
-    		/*, security = @SecurityRequirement(name = "token")*/)
+    @Operation(summary = "Endpoint para buscar informacões básicas dos Operadores",
+    		   security = @SecurityRequirement(name = "token"))
     @ApiResponses({
     	@ApiResponse(responseCode = "200",
     			description = "Identificação do Operador realizada com sucesso\t\n.",
@@ -97,8 +98,8 @@ public class OperadorController {
 	}
     
     // @formatter:off
- 	@Operation(summary = "Endpoint para cadastrar um novo Operador." 
-  		   /*security = @SecurityRequirement(name = "token")*/)
+ 	@Operation(summary = "Endpoint para cadastrar um novo Operador.",
+  		       security = @SecurityRequirement(name = "token"))
  	@ApiResponses({
  		@ApiResponse(responseCode = "201", 
  	            description = "Operador criado com sucesso.", 
@@ -127,8 +128,8 @@ public class OperadorController {
  	}	
  	
  // @formatter:off
-  	@Operation(summary = "Endpoint para Atualizar um Operador." 
-   		   /*security = @SecurityRequirement(name = "token")*/)
+  	@Operation(summary = "Endpoint para Atualizar um Operador." ,
+   		   	   security = @SecurityRequirement(name = "token"))
   	@ApiResponses({
   		@ApiResponse(responseCode = "201", 
   	            description = "Operador atualizado com sucesso.", 
@@ -159,8 +160,8 @@ public class OperadorController {
   	}	
   	
  // @formatter:off
-    @Operation(summary = "Endpoint para deletar um Operador."
-    		/*, security = @SecurityRequirement(name = "token")*/)
+    @Operation(summary = "Endpoint para deletar um Operador.",
+    		   security = @SecurityRequirement(name = "token"))
     @ApiResponses({
     	@ApiResponse(responseCode = "200", 
                 description = "Operador deletado com sucesso.", 

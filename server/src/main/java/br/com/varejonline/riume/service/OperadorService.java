@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,10 @@ import lombok.NonNull;
 public class OperadorService {
 
 	@Autowired
-	OperadorRepository repository;
+	private OperadorRepository repository;
+	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 	
 	public OperadorResponseDTO convertOperadorToOperadorResponseDTO(Operador operador) {
 		return OperadorResponseDTO.builder()
@@ -57,6 +61,7 @@ public class OperadorService {
 	
 	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED)
 	public OperadorResponseDTO create(OperadorRequestDTO objDTO) {
+		objDTO.setSenha(encoder.encode(objDTO.getSenha()));
 		Operador newObj = new Operador(objDTO.getNome(), objDTO.getUsuario(), objDTO.getSenha());
 		repository.save(newObj);
 		return convertOperadorToOperadorResponseDTO(newObj);

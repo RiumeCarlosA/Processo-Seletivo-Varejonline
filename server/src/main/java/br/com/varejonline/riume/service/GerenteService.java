@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,10 @@ import lombok.NonNull;
 public class GerenteService {
 
 	@Autowired
-	GerenteRepository repository;
+	private GerenteRepository repository;
+	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 	
 	public GerenteResponseDTO convertGerenteToGerenteResponseDTO(Gerente gerente) {
 		return GerenteResponseDTO.builder()
@@ -57,6 +61,7 @@ public class GerenteService {
 	
 	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED)
 	public GerenteResponseDTO create(GerenteRequestDTO objDTO) {
+		objDTO.setSenha(encoder.encode(objDTO.getSenha()));
 		Gerente newObj = new Gerente(objDTO.getNome(), objDTO.getUsuario(), objDTO.getSenha());
 		repository.save(newObj);
 		return convertGerenteToGerenteResponseDTO(newObj);

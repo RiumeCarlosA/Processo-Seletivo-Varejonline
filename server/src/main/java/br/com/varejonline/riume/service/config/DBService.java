@@ -5,10 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.varejonline.riume.model.Estoque;
-import br.com.varejonline.riume.model.Movimentacao;
 import br.com.varejonline.riume.model.Produto;
 import br.com.varejonline.riume.model.usuarios.Operador;
 import br.com.varejonline.riume.repository.EstoqueRepository;
@@ -20,20 +20,23 @@ import br.com.varejonline.riume.repository.usuarios.OperadorRepository;
 public class DBService {
 	
 	@Autowired
-	OperadorRepository operadorR;
+	private OperadorRepository operadorR;
 	
 	@Autowired
-	EstoqueRepository estoqueR;
+	private EstoqueRepository estoqueR;
 	
 	@Autowired 
-	MovimentacaoRepository movimentacaoR;
+	private MovimentacaoRepository movimentacaoR;
 	
 	@Autowired
-	ProdutoRepository produtoR;
+	private ProdutoRepository produtoR;
+	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 	
 	public void instanciaDB() {
 		
-		Operador operador = new Operador("Riume Carlos", "riume", "123");
+		Operador operador = new Operador("Riume Carlos", "riume", encoder.encode("123"));
 		
 		Estoque estoque = new Estoque();
 		
