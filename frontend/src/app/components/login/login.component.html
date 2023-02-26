@@ -1,0 +1,29 @@
+<div class="container">
+    <form class="form mat-elevation-z8">
+       <h1>Sistema de estoque</h1>
+       <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Usuário</mat-label>
+          <input 
+          [formControl]="usuario"
+          required
+          [(ngModel)]="creds.usuario" 
+          name="usuario" 
+          matInput 
+          placeholder="Ex. fulano">
+       </mat-form-field>
+       <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Senha</mat-label>
+          <input 
+          [formControl]="senha"
+          required
+          [(ngModel)]="creds.senha" 
+          name="senha" 
+          type="password" 
+          matInput 
+          placeholder="Ex. 123">
+       </mat-form-field>
+ 
+       <button (click)="logar()" [disabled]="!validaCampos()" class="full-width mat-elevation-z4" mat-stroked-button color="primary">Login</button>
+    </form>
+ 
+ </div>
