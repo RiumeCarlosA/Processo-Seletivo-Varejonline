@@ -1,6 +1,7 @@
 package br.com.varejonline.riume.model;
 
 import java.io.Serializable;
+import java.time.Instant;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,13 +12,17 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.DynamicUpdate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import br.com.varejonline.riume.exception.MovimentacaoInvalid;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @DynamicUpdate
 @Entity
@@ -47,6 +52,10 @@ public class Produto implements Serializable {
 	@Column(name = "saldo_inicial")
 	private Integer saldoInicial;
 	
+	@Column
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT")
+	protected Instant dataCriacao = Instant.now();
+	
 	@Column(name = "deleted", columnDefinition = "boolean default false")
 	private boolean deleted = false;
 
@@ -72,6 +81,7 @@ public class Produto implements Serializable {
 		if(saldo < this.qtdMin) {
 			new MovimentacaoInvalid("error.produto.saldo.saldo-menor-qtd-minima");
 		}
+		this.saldo = saldo;
 		this.saldoInicial = saldo;
 	}
 	

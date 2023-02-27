@@ -46,9 +46,9 @@ public class DBService {
 		
 		Estoque estoque = new Estoque();
 		
-		Produto coca = new Produto("coca-cola", "1234567891011", 1000);
+		Produto coca = new Produto("coca-cola", "1234567891011", 1000, 1500);
 		
-		Produto fanta = new Produto("fanta", "1234537461011", 1000);
+		Produto fanta = new Produto("fanta", "1234537461011", 1000, 1500);
 		
 		List<Produto> listP = new ArrayList<>(Arrays.asList(coca, fanta));
 		

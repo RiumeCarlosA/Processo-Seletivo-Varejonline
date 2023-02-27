@@ -30,6 +30,7 @@ public class ProdutoService {
 						.qtdMin(produto.getQtdMin())
 						.saldo(produto.getSaldo())
 						.saldoInicial(produto.getSaldoInicial())
+						.dataCriacao(produto.getDataCriacao())
 						.build();
 	}
 	
