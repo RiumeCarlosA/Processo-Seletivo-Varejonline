@@ -13,7 +13,7 @@ export class OperadorListComponent {
 
   ELEMENT_DATA: Operador[] = []
 
-  displayedColumns: string[] = ['id', 'nome', 'usuario', 'acoes'];
+  displayedColumns: string[] = ['nome', 'usuario', 'acoes'];
   dataSource = new MatTableDataSource<Operador>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

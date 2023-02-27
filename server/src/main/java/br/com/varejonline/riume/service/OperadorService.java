@@ -91,7 +91,4 @@ public class OperadorService {
 		repository.save(obj);
 	}
 	
-	
-	
-	
 }

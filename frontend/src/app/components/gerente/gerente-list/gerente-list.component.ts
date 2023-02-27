@@ -13,7 +13,7 @@ export class GerenteListComponent {
 
   ELEMENT_DATA: Gerente[] = []
 
-  displayedColumns: string[] = ['id', 'nome', 'usuario', 'acoes'];
+  displayedColumns: string[] = ['nome', 'usuario', 'acoes'];
   dataSource = new MatTableDataSource<Gerente>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
