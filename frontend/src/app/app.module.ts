@@ -37,6 +37,10 @@ import { GerenteUpdateComponent } from './components/gerente/gerente-update/gere
 import { GerenteListComponent } from './components/gerente/gerente-list/gerente-list.component';
 import { GerenteDeleteComponent } from './components/gerente/gerente-delete/gerente-delete.component';
 import { GerenteCreateComponent } from './components/gerente/gerente-create/gerente-create.component';
+import { ProdutoListComponent } from './components/produto/produto-list/produto-list.component';
+import { ProdutoCreateComponent } from './components/produto/produto-create/produto-create.component';
+import { ProdutoReadComponent } from './components/produto/produto-read/produto-read.component';
+import { ProdutoDeleteComponent } from './components/produto/produto-delete/produto-delete.component';
 //import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 
@@ -56,6 +60,10 @@ import { GerenteCreateComponent } from './components/gerente/gerente-create/gere
     GerenteListComponent,
     GerenteDeleteComponent,
     GerenteCreateComponent,
+    ProdutoListComponent,
+    ProdutoCreateComponent,
+    ProdutoReadComponent,
+    ProdutoDeleteComponent,
   ],
   imports: [
     BrowserModule,

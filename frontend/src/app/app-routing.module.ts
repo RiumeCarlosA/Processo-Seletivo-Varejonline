@@ -12,6 +12,9 @@ import { OperadorCreateComponent } from './components/operador/operador-create/o
 import { OperadorDeleteComponent } from './components/operador/operador-delete/operador-delete.component';
 import { OperadorListComponent } from './components/operador/operador-list/operador-list.component';
 import { OperadorUpdateComponent } from './components/operador/operador-update/operador-update.component';
+import { ProdutoCreateComponent } from './components/produto/produto-create/produto-create.component';
+import { ProdutoDeleteComponent } from './components/produto/produto-delete/produto-delete.component';
+import { ProdutoListComponent } from './components/produto/produto-list/produto-list.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -28,6 +31,10 @@ const routes: Routes = [
       {path: 'gerente/create',     component: GerenteCreateComponent},
       {path: 'gerente/update/:id', component: GerenteUpdateComponent},
       {path: 'gerente/delete/:id', component: GerenteDeleteComponent},
+
+      {path: 'produto',              component: ProdutoListComponent},
+      {path: 'produto/create',     component: ProdutoCreateComponent},
+      {path: 'gerente/delete/:id', component: ProdutoDeleteComponent},
     ]
   }
 ];
