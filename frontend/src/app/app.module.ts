@@ -33,6 +33,10 @@ import { OperadorCreateComponent } from './components/operador/operador-create/o
 import { OperadorDeleteComponent } from './components/operador/operador-delete/operador-delete.component';
 import { OperadorUpdateComponent } from './components/operador/operador-update/operador-update.component';
 import { AuthGuard } from './auth/auth.guard';
+import { GerenteUpdateComponent } from './components/gerente/gerente-update/gerente-update.component';
+import { GerenteListComponent } from './components/gerente/gerente-list/gerente-list.component';
+import { GerenteDeleteComponent } from './components/gerente/gerente-delete/gerente-delete.component';
+import { GerenteCreateComponent } from './components/gerente/gerente-create/gerente-create.component';
 //import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 
@@ -48,6 +52,10 @@ import { AuthGuard } from './auth/auth.guard';
     OperadorCreateComponent,
     OperadorDeleteComponent,
     OperadorUpdateComponent,
+    GerenteUpdateComponent,
+    GerenteListComponent,
+    GerenteDeleteComponent,
+    GerenteCreateComponent,
   ],
   imports: [
     BrowserModule,

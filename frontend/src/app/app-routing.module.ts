@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
+import { GerenteCreateComponent } from './components/gerente/gerente-create/gerente-create.component';
+import { GerenteDeleteComponent } from './components/gerente/gerente-delete/gerente-delete.component';
+import { GerenteListComponent } from './components/gerente/gerente-list/gerente-list.component';
+import { GerenteUpdateComponent } from './components/gerente/gerente-update/gerente-update.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -19,6 +23,11 @@ const routes: Routes = [
       {path: 'operador/create',     component: OperadorCreateComponent},
       {path: 'operador/update/:id', component: OperadorUpdateComponent},
       {path: 'operador/delete/:id', component: OperadorDeleteComponent},
+
+      {path: 'gerente',              component: GerenteListComponent},
+      {path: 'gerente/create',     component: GerenteCreateComponent},
+      {path: 'gerente/update/:id', component: GerenteUpdateComponent},
+      {path: 'gerente/delete/:id', component: GerenteDeleteComponent},
     ]
   }
 ];
