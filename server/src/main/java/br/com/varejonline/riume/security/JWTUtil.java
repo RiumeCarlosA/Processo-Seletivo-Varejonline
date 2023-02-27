@@ -11,10 +11,10 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 @Component
 public class JWTUtil {
-	
+
 	@Value("${jwt.expiration}")
 	private Long expiration;
-	
+
 	@Value("${jwt.secret}")
 	private String secret;
 
@@ -32,7 +32,7 @@ public class JWTUtil {
 			String username = claims.getSubject();
 			Date expirationDate = claims.getExpiration();
 			Date now = new Date(System.currentTimeMillis());
-			
+
 			if(username != null && expirationDate != null && now.before(expirationDate)) {
 				return true;
 			}

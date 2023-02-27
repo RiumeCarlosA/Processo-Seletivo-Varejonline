@@ -68,14 +68,13 @@ public class OperadorService {
 	}
 	
 	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED)
-	public OperadorResponseDTO update(Integer id, OperadorUpdateDTO objDTO) {
+	public OperadorResponseDTO update(Integer id, OperadorUpdateDTO objDTO) throws Exception {
 		objDTO.setId(id);
 		Operador oldObj = repository.findById(id)
 							.orElseThrow(() -> new NotFoundException("{error.operador.update.operador.not-found}"));
 		if(!objDTO.getSenha().equals(oldObj.getSenha())) {
 			objDTO.setSenha(objDTO.getSenha());
 		}
-		
 		oldObj = new Operador(objDTO.getNome(), objDTO.getUsuario(), objDTO.getSenha(), objDTO.getPerfil());
 		
 		repository.save(oldObj);

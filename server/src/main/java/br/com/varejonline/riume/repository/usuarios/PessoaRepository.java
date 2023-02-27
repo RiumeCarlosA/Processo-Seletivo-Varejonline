@@ -8,6 +8,6 @@ import br.com.varejonline.riume.model.usuarios.Pessoa;
 
 public interface PessoaRepository extends JpaRepository<Pessoa, Integer> {
 
-	Optional<Pessoa> findByusuario(String usuario);
+	Optional<Pessoa> findByUsuario(String usuario);
 
 }

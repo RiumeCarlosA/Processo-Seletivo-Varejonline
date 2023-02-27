@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import br.com.varejonline.riume.model.enums.Perfil;
 
 public class UserSS implements UserDetails {
-	
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
@@ -50,20 +49,16 @@ public class UserSS implements UserDetails {
 	public boolean isAccountNonExpired() {
 		return true;
 	}
-
 	@Override
 	public boolean isAccountNonLocked() {
 		return true;
 	}
-
 	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
-
 	@Override
 	public boolean isEnabled() {
 		return true;
 	}
-
 }
