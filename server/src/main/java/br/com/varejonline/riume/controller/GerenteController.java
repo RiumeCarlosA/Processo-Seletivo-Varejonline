@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,10 +29,12 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @Tag(name = "GerenteController", description = "EndPoints para Gerente")
+@PreAuthorize("hasAnyRole('ROLE_GERENTE')")
 @RequestMapping(value = "/gerente", produces = MediaType.APPLICATION_JSON_VALUE)
 public class GerenteController {
 
@@ -39,8 +42,8 @@ public class GerenteController {
 	private GerenteService service;
 
 	// @formatter:off
-    @Operation(summary = "Endpoint para buscar informacões básicas de todos os Gerentes"
-    		/*, security = @SecurityRequirement(name = "token")*/)
+    @Operation(summary = "Endpoint para buscar informacões básicas de todos os Gerentes",
+    		   security = @SecurityRequirement(name = "token"))
     @ApiResponses({
     	@ApiResponse(responseCode = "200",
     			description = "Identificação dos Gerentes realizadas com sucesso\t\n.",
@@ -68,8 +71,8 @@ public class GerenteController {
 	}
 
 	// @formatter:off
-    @Operation(summary = "Endpoint para buscar informacões básicas dos Gerentes"
-    		/*, security = @SecurityRequirement(name = "token")*/)
+    @Operation(summary = "Endpoint para buscar informacões básicas dos Gerentes",
+    		   security = @SecurityRequirement(name = "token"))
     @ApiResponses({
     	@ApiResponse(responseCode = "200",
     			description = "Identificação do Gerente realizada com sucesso\t\n.",
@@ -98,8 +101,8 @@ public class GerenteController {
 	}
 
 	// @formatter:off
- 	@Operation(summary = "Endpoint para cadastrar um novo Gerente." 
-  		   /*security = @SecurityRequirement(name = "token")*/)
+ 	@Operation(summary = "Endpoint para cadastrar um novo Gerente.",
+  		       security = @SecurityRequirement(name = "token"))
  	@ApiResponses({
  		@ApiResponse(responseCode = "201", 
  	            description = "Gerente criado com sucesso.", 
@@ -128,8 +131,8 @@ public class GerenteController {
 	}
 
 	// @formatter:off
-  	@Operation(summary = "Endpoint para Atualizar um Gerente." 
-   		   /*security = @SecurityRequirement(name = "token")*/)
+  	@Operation(summary = "Endpoint para Atualizar um Gerente.",
+   		       security = @SecurityRequirement(name = "token"))
   	@ApiResponses({
   		@ApiResponse(responseCode = "201", 
   	            description = "Gerente atualizado com sucesso.", 
@@ -159,8 +162,8 @@ public class GerenteController {
 	}
 
 	// @formatter:off
-    @Operation(summary = "Endpoint para deletar um Gerente."
-    		/*, security = @SecurityRequirement(name = "token")*/)
+    @Operation(summary = "Endpoint para deletar um Gerente.",
+    		   security = @SecurityRequirement(name = "token"))
     @ApiResponses({
     	@ApiResponse(responseCode = "200", 
                 description = "Gerente deletado com sucesso.", 
