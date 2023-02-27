@@ -27,6 +27,12 @@ import { LoginComponent } from './components/login/login.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptorProvider } from './interceptor/auth.interceptor';
 import { NavComponent } from './components/nav/nav.component';
+import { HomeComponent } from './components/home/home.component';
+import { OperadorListComponent } from './components/operador/operador-list/operador-list.component';
+import { OperadorCreateComponent } from './components/operador/operador-create/operador-create.component';
+import { OperadorDeleteComponent } from './components/operador/operador-delete/operador-delete.component';
+import { OperadorUpdateComponent } from './components/operador/operador-update/operador-update.component';
+import { AuthGuard } from './auth/auth.guard';
 //import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 
@@ -36,7 +42,12 @@ import { NavComponent } from './components/nav/nav.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    NavComponent
+    NavComponent,
+    HomeComponent,
+    OperadorListComponent,
+    OperadorCreateComponent,
+    OperadorDeleteComponent,
+    OperadorUpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +79,7 @@ import { NavComponent } from './components/nav/nav.component';
       progressBar: true
     }),
   ],
-  providers: [AuthInterceptorProvider],
+  providers: [AuthInterceptorProvider, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
