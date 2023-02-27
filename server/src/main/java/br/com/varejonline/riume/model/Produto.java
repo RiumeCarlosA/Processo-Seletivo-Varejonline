@@ -12,9 +12,13 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.DynamicUpdate;
 
 import br.com.varejonline.riume.exception.MovimentacaoInvalid;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
+@Builder
 @DynamicUpdate
 @Entity
 public class Produto implements Serializable {
@@ -23,7 +27,7 @@ public class Produto implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected Integer id;
+	private Integer id;
 	
 	@Column(name = "codigo_barras")
 	private String codBarra;
@@ -34,6 +38,9 @@ public class Produto implements Serializable {
 	@Column(name = "quantidade_minima", nullable = false)
 	private Integer qtdMin;
 	
+	@Column
+	private Integer saldo;
+	
 	@ManyToOne
 	private Estoque estoque;
 	
@@ -41,15 +48,17 @@ public class Produto implements Serializable {
 	private Integer saldoInicial;
 	
 	@Column(name = "deleted", columnDefinition = "boolean default false")
-	protected boolean deleted = false;
+	private boolean deleted = false;
 
+	@Builder
 	public Produto(String nome, String codBarra, Integer qtdMin) {
 		this.nome = nome;
 		this.codBarra = codBarra;
 		this.qtdMin = qtdMin;
 	}
 	
-	public Produto(String nome, String codBarra, Integer qtdMin, Integer saldoInicial, Movimentacao movimentacao) {
+	@Builder
+	public Produto(String nome, String codBarra, Integer qtdMin, Integer saldoInicial) {
 		this.nome = nome;
 		this.codBarra = codBarra;
 		this.qtdMin = qtdMin;
