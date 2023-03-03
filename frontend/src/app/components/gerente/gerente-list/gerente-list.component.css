@@ -11,6 +11,11 @@ table {
 mat-form-field {
     margin-top: 1rem;
     width: 30%;
+    
+}
+
+ng-container {
+    
 }
 
 button {
