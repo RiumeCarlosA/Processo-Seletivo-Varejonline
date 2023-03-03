@@ -15,7 +15,7 @@ export class ProdutoListComponent {
 
   FILTERED_DATA: Produto[] = []
 
-  displayedColumns: string[] = ['id', 'nome', 'codBarra', 'qtdMin', 'saldoInicial', 'saldo', 'data', 'acoes'];
+  displayedColumns: string[] = ['id', 'nome', 'codBarra', 'qtdMin', 'saldoInicial', 'saldo', 'dataCriacao', 'acoes'];
   dataSource = new MatTableDataSource<Produto>(this.ELEMENT_DATA);
 
   prioridade: any = null;
