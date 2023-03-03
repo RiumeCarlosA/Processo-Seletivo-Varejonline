@@ -2,16 +2,10 @@ package br.com.varejonline.riume.model;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +32,7 @@ public class Movimentacao implements Serializable {
 	private Integer id;
 	
 	@Column(name = "quantidade")
-	private Integer qtd;
+	private Integer quantidade;
 	
 	@Column(name = "motivo")
 	private String motivo;
@@ -50,17 +44,15 @@ public class Movimentacao implements Serializable {
 	private Produto produto;
 	
 	@ToString.Exclude
-	@ElementCollection(fetch = FetchType.EAGER)
-	@CollectionTable(name = "MOVIMENTO")
-	private Set<Integer> movimentos = new HashSet<>();
+	private Movimentos movimentos;
 	
 	@Column(name = "data_movimentacao")	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT")
 	private Instant dataMovimentacao = Instant.now();
 	
 	@Builder
-	public Movimentacao(Integer qtd, String motivo, Produto produto, Pessoa pessoa) {
-		this.qtd = qtd;
+	public Movimentacao(Integer quantidade, String motivo, Produto produto, Pessoa pessoa) {
+		this.quantidade = quantidade;
 		this.motivo = motivo;
 		this.produto = produto;
 		this.pessoa = pessoa;
@@ -68,22 +60,12 @@ public class Movimentacao implements Serializable {
 	
 	@Builder
 	public Movimentacao(Produto produto, Pessoa pessoa) {
-		this.qtd = produto.getSaldoInicial();
+		this.quantidade = produto.getSaldoInicial();
 		this.produto = produto;
 		this.pessoa = pessoa;
-		this.addMovimento(Movimentos.SALDO_INICIAL);
+		this.movimentos = Movimentos.SALDO_INICIAL;
 	}
 	
-	public Set<Movimentos> getMovimentos() {
-		return movimentos.stream().map(x -> Movimentos.toEnum(x)).collect(Collectors.toSet());
-	}
-
-	public void addMovimento(Movimentos movimentos ) {
-		this.movimentos.add(movimentos.getCodigo());
-	}
 	
-	public Set<Integer> getMovimento() {
-		return this.movimentos;
-	}
 	
 }

@@ -14,4 +14,8 @@ export class MovimentacaoService {
   findAll(): Observable<Movimentacao[]> {
     return this.http.get<Movimentacao[]>(`${API_CONFIG.baseUrl}/movimentacao`);
   }
+
+  create(movimentacao: Movimentacao): Observable<Movimentacao> {
+    return this.http.post<Movimentacao>(`${API_CONFIG.baseUrl}/movimentacao`, movimentacao);
+  }
 }

@@ -47,19 +47,14 @@ public class DBService {
 		Produto fanta = new Produto("fanta", "1234537461011", 1000, 1500);
 		
 		Movimentacao mov1 = new Movimentacao(coca, gerente);
+		
 		Movimentacao mov2 = new Movimentacao(fanta, gerente);
-		
-		Movimentacao mov3 = new Movimentacao(100, "chegada de itens", fanta, operador);
-		mov3.addMovimento(Movimentos.ENTRADA);
-		
-		Movimentacao mov4 = new Movimentacao(50, "chegada de itens", coca, operador);
-		mov4.addMovimento(Movimentos.ENTRADA);
 		
 		List<Produto> listP = new ArrayList<>(Arrays.asList(coca, fanta));
 				
 		gerenteR.save(gerente);
 		operadorR.save(operador);
-		movimentacaoR.saveAll(Arrays.asList(mov1, mov2, mov3, mov4));
+		movimentacaoR.saveAll(Arrays.asList(mov1, mov2));
 		produtoR.saveAll(listP);
 		
 		

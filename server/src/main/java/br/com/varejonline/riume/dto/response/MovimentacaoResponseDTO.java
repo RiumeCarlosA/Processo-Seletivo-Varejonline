@@ -1,9 +1,6 @@
 package br.com.varejonline.riume.dto.response;
 
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -31,8 +28,7 @@ public class MovimentacaoResponseDTO {
 	
 	private String nomeProduto;
 	
-	@Builder.Default
-	private Set<Integer> movimentos = new HashSet<>();
+	private Movimentos movimentos;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT")
 	private Instant dataMovimentacao;
@@ -45,18 +41,6 @@ public class MovimentacaoResponseDTO {
 		this.nomePessoa = pessoa.getNome();
 		this.nomeProduto = produto.getNome();
 		this.dataMovimentacao = dataMovimentacao;
-		this.addMovimento(movimento);
-	}
-	
-	public Set<Movimentos> getMovimentos() {
-		return movimentos.stream().map(x -> Movimentos.toEnum(x)).collect(Collectors.toSet());
-	}
-	
-	public Set<Integer> getMovimento() {
-		return this.movimentos;
-	}
-
-	public void addMovimento(Movimentos movimentos ) {
-		this.movimentos.add(movimentos.getCodigo());
+		this.movimentos = movimento;
 	}
 }
