@@ -1,9 +1,5 @@
 package br.com.varejonline.riume.model.enums;
 
-import java.time.Instant;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import lombok.Getter;
 
 @Getter
@@ -14,13 +10,6 @@ public enum Movimentos {
 	private Integer codigo;
 	
 	private String descricao;
-	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT")
-	private Instant dataMovimentacao = Instant.now();
-	
-	private Integer qtd;
-	
-	private String motivo;
 	
 	private Movimentos(Integer codigo, String descricao) {
 		this.codigo = codigo;

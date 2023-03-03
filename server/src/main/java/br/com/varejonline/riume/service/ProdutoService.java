@@ -12,8 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.varejonline.riume.dto.request.ProdutoCreateDTO;
 import br.com.varejonline.riume.dto.response.ProdutoResponseDTO;
 import br.com.varejonline.riume.exception.NotFoundException;
+import br.com.varejonline.riume.model.Movimentacao;
 import br.com.varejonline.riume.model.Produto;
+import br.com.varejonline.riume.model.usuarios.Pessoa;
+import br.com.varejonline.riume.repository.MovimentacaoRepository;
 import br.com.varejonline.riume.repository.ProdutoRepository;
+import br.com.varejonline.riume.repository.usuarios.PessoaRepository;
 import lombok.NonNull;
 
 @Service
@@ -21,6 +25,12 @@ public class ProdutoService {
 
 	@Autowired
 	private ProdutoRepository repository;
+	
+	@Autowired
+	private MovimentacaoRepository repositoryM;
+	
+	@Autowired
+	private PessoaRepository repositoryP;
 	
 	public ProdutoResponseDTO convertProdutoToProdutoResponseDTO(Produto produto) {
 		return ProdutoResponseDTO.builder()
@@ -60,6 +70,12 @@ public class ProdutoService {
 	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED)
 	public ProdutoResponseDTO create(ProdutoCreateDTO objDTO) {
 		Produto newObj = new Produto(objDTO.getNome(), objDTO.getCodBarra(), objDTO.getQtdMin(), objDTO.getSaldoInicial());
+		Optional<Pessoa> user = repositoryP.findByUsuario(objDTO.getUsuario());
+		if(user.isPresent()) {
+			repositoryM.save(new Movimentacao(newObj, user.get()));
+		}else {
+			new NotFoundException("{error.produto.create.produto.not-found}");
+		}
 		repository.save(newObj);
 		return convertProdutoToProdutoResponseDTO(newObj);
 	}

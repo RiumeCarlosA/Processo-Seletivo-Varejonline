@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -45,9 +44,6 @@ public class Produto implements Serializable {
 	
 	@Column
 	private Integer saldo;
-	
-	@ManyToOne
-	private Estoque estoque;
 	
 	@Column(name = "saldo_inicial")
 	private Integer saldoInicial;

@@ -41,6 +41,8 @@ import { ProdutoListComponent } from './components/produto/produto-list/produto-
 import { ProdutoCreateComponent } from './components/produto/produto-create/produto-create.component';
 import { ProdutoReadComponent } from './components/produto/produto-read/produto-read.component';
 import { ProdutoDeleteComponent } from './components/produto/produto-delete/produto-delete.component';
+import { EstoqueListComponent } from './components/estoque/estoque-list/estoque-list.component';
+import { MovimentacaoCreateComponent } from './components/estoque/movimentacao-create/movimentacao-create.component';
 //import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 
@@ -64,6 +66,8 @@ import { ProdutoDeleteComponent } from './components/produto/produto-delete/prod
     ProdutoCreateComponent,
     ProdutoReadComponent,
     ProdutoDeleteComponent,
+    EstoqueListComponent,
+    MovimentacaoCreateComponent,
   ],
   imports: [
     BrowserModule,

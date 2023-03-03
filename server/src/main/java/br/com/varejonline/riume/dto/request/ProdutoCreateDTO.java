@@ -20,11 +20,14 @@ public class ProdutoCreateDTO {
 		
 	private Integer saldoInicial;
 	
+	private String usuario;
+	
 	@Builder
-	public ProdutoCreateDTO(String nome, String codBarra, Integer qtdMin, Integer saldoInicial) {
+	public ProdutoCreateDTO(String nome, String codBarra, Integer qtdMin, Integer saldoInicial, String usuario) {
 		this.nome = nome;
 		this.codBarra = codBarra;
 		this.qtdMin = qtdMin;
 		this.saldoInicial = saldoInicial;
+		this.usuario = usuario;
 	}	
 }

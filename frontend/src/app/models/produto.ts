@@ -5,5 +5,6 @@ export interface Produto{
     qtdMin:             any;
     saldoInicial:       any;
     saldo?:             any;
-    data?:              any;
+    dataCriacao?:    string;
+    usuario?:        string;
 }

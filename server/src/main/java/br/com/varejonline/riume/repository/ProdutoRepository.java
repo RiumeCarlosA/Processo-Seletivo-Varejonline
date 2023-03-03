@@ -11,4 +11,6 @@ public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
 
 	Optional<Produto> findByIdAndDeleted(@NonNull Integer produtoId, boolean b);
 
+	Optional<Produto> findByNome(@NonNull String produto);
+
 }
