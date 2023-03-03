@@ -44,7 +44,7 @@ public class ProdutoController {
     		   security = @SecurityRequirement(name = "token"))
     @ApiResponses({
     	@ApiResponse(responseCode = "200",
-    			description = "Identificação dos Produtoes realizadas com sucesso\t\n.",
+    			description = "Identificação dos Produtos realizadas com sucesso\t\n.",
     			content = @Content( mediaType = MediaType.APPLICATION_JSON_VALUE,
     			schema = @Schema(implementation = ProdutoResponseDTO.class))
     	),
@@ -69,7 +69,7 @@ public class ProdutoController {
 	}
 
 	// @formatter:off
-    @Operation(summary = "Endpoint para buscar informacões básicas dos Produtoes",
+    @Operation(summary = "Endpoint para buscar informacões básicas dos Produtos",
     		   security = @SecurityRequirement(name = "token"))
     @ApiResponses({
     	@ApiResponse(responseCode = "200",

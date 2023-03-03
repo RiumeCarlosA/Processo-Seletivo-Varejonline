@@ -23,10 +23,12 @@ import br.com.varejonline.riume.model.enums.Movimentos;
 import br.com.varejonline.riume.model.usuarios.Pessoa;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class Movimentacao implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -44,7 +46,6 @@ public class Movimentacao implements Serializable {
 	@ManyToOne
 	private Pessoa pessoa;
 	
-	//@ManyToMany(mappedBy = "movimentacao", cascade = CascadeType.ALL)
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Produto produto;
 	
@@ -53,7 +54,7 @@ public class Movimentacao implements Serializable {
 	@CollectionTable(name = "MOVIMENTO")
 	private Set<Integer> movimentos = new HashSet<>();
 	
-	@Column(name = "data_movimentacao")
+	@Column(name = "data_movimentacao")	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT")
 	private Instant dataMovimentacao = Instant.now();
 	
@@ -65,12 +66,24 @@ public class Movimentacao implements Serializable {
 		this.pessoa = pessoa;
 	}
 	
+	@Builder
+	public Movimentacao(Produto produto, Pessoa pessoa) {
+		this.qtd = produto.getSaldoInicial();
+		this.produto = produto;
+		this.pessoa = pessoa;
+		this.addMovimento(Movimentos.SALDO_INICIAL);
+	}
+	
 	public Set<Movimentos> getMovimentos() {
 		return movimentos.stream().map(x -> Movimentos.toEnum(x)).collect(Collectors.toSet());
 	}
 
 	public void addMovimento(Movimentos movimentos ) {
 		this.movimentos.add(movimentos.getCodigo());
+	}
+	
+	public Set<Integer> getMovimento() {
+		return this.movimentos;
 	}
 	
 }

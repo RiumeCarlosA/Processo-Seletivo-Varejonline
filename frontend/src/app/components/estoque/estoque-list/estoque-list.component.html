@@ -1,0 +1,62 @@
+<div class="container">
+
+    <mat-form-field>
+      <mat-label>Pesquisar</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+    
+    <button routerLink="create" class="mat-elevation-z8" mat-stroked-button color="primary">Nova Movimentação </button>
+  
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+      
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="quantidade">
+            <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+            <td mat-cell *matCellDef="let element"> {{element.qtd}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="nomePessoa">
+            <th mat-header-cell *matHeaderCellDef> Nome Profissional </th>
+            <td mat-cell *matCellDef="let element"> {{element.nomePessoa}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nomeProduto">
+            <th mat-header-cell *matHeaderCellDef> Produto </th>
+            <td mat-cell *matCellDef="let element"> {{element.nomeProduto}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="dataMovimentacao">
+            <th mat-header-cell *matHeaderCellDef> Data da Movimentação </th>
+            <td mat-cell *matCellDef="let element"> {{element.dataMovimentacao}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="movimentos">
+            <th mat-header-cell *matHeaderCellDef> Tipo de Movimento </th>
+            <td mat-cell *matCellDef="let element"> {{element.movimentos}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="acoes">
+            <th mat-header-cell *matHeaderCellDef> Ações </th>
+            <td mat-cell *matCellDef="let element"> 
+            <a routerLink="read/{{ element.id }}">
+              <i class="material-icons visibility">visibility</i>
+            </a>  
+            </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 2, 10, 20]"
+                        showFirstLastButtons
+                        aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
+            
+  </div>

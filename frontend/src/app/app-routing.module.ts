@@ -1,6 +1,8 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
+import { EstoqueListComponent } from './components/estoque/estoque-list/estoque-list.component';
+import { MovimentacaoCreateComponent } from './components/estoque/movimentacao-create/movimentacao-create.component';
 import { GerenteCreateComponent } from './components/gerente/gerente-create/gerente-create.component';
 import { GerenteDeleteComponent } from './components/gerente/gerente-delete/gerente-delete.component';
 import { GerenteListComponent } from './components/gerente/gerente-list/gerente-list.component';
@@ -20,21 +22,24 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   {
     path: '', component: NavComponent, canActivate: [AuthGuard], children: [
-      {path: 'home',                         component: HomeComponent},
+      {path: 'home',                               component: HomeComponent},
 
-      {path: 'operador',              component: OperadorListComponent},
-      {path: 'operador/create',     component: OperadorCreateComponent},
-      {path: 'operador/update/:id', component: OperadorUpdateComponent},
-      {path: 'operador/delete/:id', component: OperadorDeleteComponent},
+      {path: 'operador',                   component: OperadorListComponent},
+      {path: 'operador/create',          component: OperadorCreateComponent},
+      {path: 'operador/update/:id',      component: OperadorUpdateComponent},
+      {path: 'operador/delete/:id',      component: OperadorDeleteComponent},
 
-      {path: 'gerente',              component: GerenteListComponent},
-      {path: 'gerente/create',     component: GerenteCreateComponent},
-      {path: 'gerente/update/:id', component: GerenteUpdateComponent},
-      {path: 'gerente/delete/:id', component: GerenteDeleteComponent},
+      {path: 'gerente',                     component: GerenteListComponent},
+      {path: 'gerente/create',            component: GerenteCreateComponent},
+      {path: 'gerente/update/:id',        component: GerenteUpdateComponent},
+      {path: 'gerente/delete/:id',        component: GerenteDeleteComponent},
 
-      {path: 'produto',              component: ProdutoListComponent},
-      {path: 'produto/create',     component: ProdutoCreateComponent},
-      {path: 'gerente/delete/:id', component: ProdutoDeleteComponent},
+      {path: 'produto',                     component: ProdutoListComponent},
+      {path: 'produto/create',            component: ProdutoCreateComponent},
+      {path: 'gerente/delete/:id',        component: ProdutoDeleteComponent},
+
+      {path: 'estoque',                     component: EstoqueListComponent},
+      {path: 'estoque/movimentacao', component: MovimentacaoCreateComponent},
     ]
   }
 ];
